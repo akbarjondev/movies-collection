@@ -69,31 +69,47 @@ var movies = kinolar.splice(0, 50);
 // });
 
 /*******************WITH FRAGMENT********************/
-var fragmentBox = document.createDocumentFragment();
+// var fragmentBox = document.createDocumentFragment();
 
-movies.forEach(function(movie) {
-	// create elements
-	var elNewLi = createElement('li', 'movies__item');
+// movies.forEach(function(movie) {
+// 	// create elements
+// 	var elNewLi = createElement('li', 'movies__item');
 
-	var moviesName = createElement('h3', 'movies__name', movie.title);
+// 	var moviesName = createElement('h3', 'movies__name', movie.title);
 
-	var moviesActor = createElement('div', 'movies__actor', movie.cast.join(', '));
+// 	var moviesActor = createElement('div', 'movies__actor', movie.cast.join(', '));
 
-	var moviesYear = createElement('p', 'movies__year', movie.year);
+// 	var moviesYear = createElement('p', 'movies__year', movie.year);
 
-	// append new els
-	fragmentBox.innerHTML = '';
+// 	// append new els
+// 	fragmentBox.innerHTML = '';
 
-	elNewLi.appendChild(moviesName);
-	elNewLi.appendChild(moviesActor);
-	elNewLi.appendChild(moviesYear);
+// 	elNewLi.appendChild(moviesName);
+// 	elNewLi.appendChild(moviesActor);
+// 	elNewLi.appendChild(moviesYear);
 
-	// append li element to ul
-	fragmentBox.append(elNewLi);	
-});
+// 	// append li element to ul
+// 	fragmentBox.append(elNewLi);	
+// });
 
-// append a ready fragmwntBox to the ul
-elMoviesList.appendChild(fragmentBox);
+// // append a ready fragmwntBox to the ul
+// elMoviesList.appendChild(fragmentBox);
 
 
 /*******************WITH TEMPLATE********************/
+var template = $_('#template_movies').content;
+
+var appendMovies = function(movie) {
+	var newTemplateLi = template.cloneNode(true);
+	
+	// !WARNING shu yerda querySelector() bilan kerakli elementlarni tutolmadim
+	newTemplateLi.childNodes[1].children[0].textContent = movie.title;
+	newTemplateLi.childNodes[1].children[1].textContent = movie.cast.join(', ');
+	newTemplateLi.childNodes[1].children[2].textContent = movie.year;
+
+	return newTemplateLi;
+}
+
+movies.forEach( function(movie) {
+	elMoviesList.append(appendMovies(movie));
+});
