@@ -3,18 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>55-dars. Bootstrap. container va boshqa umumiy masalalar</title>
+  <title>4-oy 16-dars | Vazifa</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Livvic:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
  
-  
+  <div class="container">
+    <h1 class="text-center font-weight-bold mb-4">Movies list</h1>
+    <ul class="movies__list list-unstyled"></ul>
 
+  </div>
+
+  <template id="template_movies">
+    <li class="movies__item">
+      <h3 class="movies__name">
+      	<span class="info-text">Movie tittle:</span>
+      	<span class="movies__tittle"></span>
+      </h3>
+      <div class="movies__actor">
+        <span class="info-text">Actors:</span>
+        <span class="actors__name"></span>
+      </div>
+      <div class="movies__year">
+        <span class="info-text">Genres:</span>
+        <span class="movies__genres"></span>
+      </div>
+      <p class="movies__year">
+        <span class="info-text">Year:</span>
+        <span class="movie__year">2017</span>
+      </p>
+    </li>
+  </template>
 
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/kinolar.js"></script>
   <script src="js/scripts.js"></script>
 </body>
 </html>
